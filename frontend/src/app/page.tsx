@@ -32,9 +32,10 @@ const Home: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
                 const [standardResponse, adjustedResponse] = await Promise.all([
-                    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/medals`),
-                    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/medals/adjusted`)
+                    axios.get(`${apiUrl}/api/medals`),
+                    axios.get(`${apiUrl}/api/medals/adjusted`)
                 ]);
                 setMedalData(standardResponse.data);
                 setAdjustedMedalData(adjustedResponse.data);
