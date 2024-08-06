@@ -13,6 +13,7 @@ import {
     Accordion,
     AccordionItem
 } from "@nextui-org/react";
+import Image from 'next/image';
 
 interface MedalData {
     rank: string;
@@ -87,14 +88,14 @@ const Home: React.FC = () => {
                 <Tab value="adjusted" title="Adjusted Medal Table">
                     <Accordion>
                         <AccordionItem key="1" aria-label="Explanation" title="Explanation">
-                            The "Adjusted Medal Table" offers a unique perspective on the Olympic medal standings by
-                            normalizing the medal counts based on the population of each country. This adjustment allows
-                            for a fairer comparison of the athletic achievements of countries with vastly different
-                            population sizes. By calculating the number of medals per million inhabitants, the table
-                            highlights the relative success of smaller nations that might otherwise be overshadowed by
-                            more populous countries. This adjusted ranking provides valuable insights into the
-                            efficiency and effectiveness of each country's sports programs and the prowess of their
-                            athletes on the world stage.
+                            The &quot;Adjusted Medal Table&quot; offers a unique perspective on the Olympic medal
+                            standings by normalizing the medal counts based on the population of each country. This
+                            adjustment allows for a fairer comparison of the athletic achievements of countries with
+                            vastly different population sizes. By calculating the number of medals per million
+                            inhabitants, the table highlights the relative success of smaller nations that might
+                            otherwise be overshadowed by more populous countries. This adjusted ranking provides
+                            valuable insights into the efficiency and effectiveness of each country&apos;s sports
+                            programs and the prowess of their athletes on the world stage.
                         </AccordionItem>
                     </Accordion>
 
@@ -104,10 +105,11 @@ const Home: React.FC = () => {
             <div style={{position: 'absolute', top: 0, right: 0, padding: '10px'}}>
                 <a href="https://en.wikipedia.org/wiki/2024_Summer_Olympics_medal_table" target="_blank"
                    rel="noopener noreferrer">
-                    <img
+                    <Image
                         src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png"
                         alt="Wikipedia"
-                        style={{width: '50px', height: '50px'}}
+                        width={50}
+                        height={50}
                     />
                     <p style={{fontSize: '12px', textAlign: 'center'}}>Based on Wikipedia data</p>
                 </a>
