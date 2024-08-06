@@ -28,7 +28,6 @@ interface MedalData {
 const Home: React.FC = () => {
     const [medalData, setMedalData] = useState<MedalData[]>([]);
     const [adjustedMedalData, setAdjustedMedalData] = useState<MedalData[]>([]);
-    const [activeTab, setActiveTab] = useState('standard');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +47,7 @@ const Home: React.FC = () => {
     }, []);
 
     const renderTable = (data: MedalData[]) => (
-        <Table aria-label="Olympic Medal Table" css={{minWidth: "100%"}}>
+        <Table aria-label="Olympic Medal Table" style={{ minWidth: "100%" }}>
             <TableHeader>
                 <TableColumn>Rank</TableColumn>
                 <TableColumn>Country</TableColumn>
@@ -81,7 +80,7 @@ const Home: React.FC = () => {
     return (
         <div className="m-4">
             <h1 className="text-2xl font-bold mb-4">2024 Summer Olympics Medal Table</h1>
-            <Tabs value={activeTab}>
+            <Tabs>
                 <Tab value="standard" title="Standard Medal Table">
                     {renderTable(medalData)}
                 </Tab>
