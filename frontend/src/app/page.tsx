@@ -48,7 +48,7 @@ const Home: React.FC = () => {
     }, []);
 
     const renderTable = (data: MedalData[]) => (
-        <Table aria-label="Olympic Medal Table" style={{ minWidth: "100%" }}>
+        <Table aria-label="Olympic Medal Table" style={{minWidth: "100%"}}>
             <TableHeader>
                 <TableColumn>Rank</TableColumn>
                 <TableColumn>Country</TableColumn>
@@ -80,15 +80,15 @@ const Home: React.FC = () => {
 
     return (
         <div className="m-4">
-            <h1 className="text-2xl font-bold mb-4">2024 Summer Olympics Medal Table</h1>
+            <h1 className="text-2xl font-bold mb-4 mr-12">2024 Summer Olympics Medal Table</h1>
             <Tabs>
-                <Tab value="standard" title="Standard Medal Table">
+                <Tab value="standard" title="Medal Table">
                     {renderTable(medalData)}
                 </Tab>
-                <Tab value="adjusted" title="Adjusted Medal Table">
+                <Tab value="adjusted" title="Medal Table Per Capita">
                     <Accordion>
                         <AccordionItem key="1" aria-label="Explanation" title="Explanation">
-                            The &quot;Adjusted Medal Table&quot; offers a unique perspective on the Olympic medal
+                            The &quot;Medal Table Per Capita&quot; offers a unique perspective on the Olympic medal
                             standings by normalizing the medal counts based on the population of each country. This
                             adjustment allows for a fairer comparison of the athletic achievements of countries with
                             vastly different population sizes. By calculating the number of medals per million
@@ -102,18 +102,41 @@ const Home: React.FC = () => {
                     {renderTable(adjustedMedalData)}
                 </Tab>
             </Tabs>
-            <div style={{position: 'absolute', top: 0, right: 0, padding: '10px'}}>
+            <div className="wikipedia-link">
                 <a href="https://en.wikipedia.org/wiki/2024_Summer_Olympics_medal_table" target="_blank"
                    rel="noopener noreferrer">
                     <Image
                         src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png"
                         alt="Wikipedia"
-                        width={50}
-                        height={50}
+                        width={30}
+                        height={30}
                     />
-                    <p style={{fontSize: '12px', textAlign: 'center'}}>Based on Wikipedia data</p>
+                    <p>Based on Wikipedia data</p>
                 </a>
             </div>
+            <style jsx>{`
+                .wikipedia-link {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+
+                .wikipedia-link p {
+                    font-size: 12px;
+                    text-align: center;
+                }
+
+                @media (max-width: 600px) {
+                    .wikipedia-link p {
+                        display: none;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
