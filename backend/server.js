@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 50000;
 
 
 app.use(cors());
@@ -28,7 +28,9 @@ const fetchMedalData = async () => {
     let lastRank = null;
     let rowSpan = 0;
 
-    const rows = $('table.wikitable tbody tr');
+    const firstTable = $('table.wikitable').first();
+    const rows = firstTable.find('tbody tr');
+
     rows.each((index, element) => {
         if (index === 0 || index === rows.length - 1) return; // Skip the header row and the last row
 
