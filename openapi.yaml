@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: Olympic Medal Table API
+  description: API for retrieving Olympic medal tables, including a population-adjusted version.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Local server
+paths:
+  /api/medals:
+    get:
+      summary: Retrieve the standard Olympic medal table
+      responses:
+        '200':
+          description: A list of countries with their medal counts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedalData'
+        '500':
+          description: Error fetching medal data
+  /api/medals/adjusted:
+    get:
+      summary: Retrieve the population-adjusted Olympic medal table
+      responses:
+        '200':
+          description: A list of countries with their population-adjusted medal counts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedalData'
+        '500':
+          description: Error fetching adjusted medal data
+components:
+  schemas:
+    MedalData:
+      type: object
+      properties:
+        rank:
+          type: string
+          description: The rank of the country based on medal counts
+          example: "1"
+        country:
+          type: string
+          description: The name of the country
+          example: "United States"
+        gold:
+          type: string
+          description: The number of gold medals
+          example: "39"
+        silver:
+          type: string
+          description: The number of silver medals
+          example: "41"
+        bronze:
+          type: string
+          description: The number of bronze medals
+          example: "33"
+        total:
+          type: string
+          description: The total number of medals
+          example: "113"
+        flagUrl:
+          type: string
+          description: The URL of the country's flag image
+          example: "//upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
